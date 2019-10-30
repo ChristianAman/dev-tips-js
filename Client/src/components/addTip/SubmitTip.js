@@ -9,15 +9,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SubmitTip = props => {
+  const { title, desc, link } = props.props;
+
   console.log(props);
 
   const submit = () => {
-    console.log(props.title, props.desc, props.link);
+    console.log(title, desc, link);
   };
 
   const classes = useStyles();
 
-  const { title, desc, link } = props.props;
   return (
     <div>
       <h1>Sum:</h1>
