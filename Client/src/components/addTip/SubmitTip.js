@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -15,6 +16,18 @@ const SubmitTip = props => {
 
   const submit = () => {
     console.log(title, desc, link);
+    axios
+      .post('/tips', {
+        title,
+        desc,
+        link,
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   const classes = useStyles();
@@ -28,7 +41,7 @@ const SubmitTip = props => {
         <a href={link}>{link}</a>
       </span>
       <Button onClick={submit} variant='outlined' className={classes.button}>
-        Next
+        Submit
       </Button>
     </div>
   );

@@ -22,8 +22,6 @@ const Card = props => {
   const { title, desc, link } = props;
   const classes = useStyles();
 
-  console.log('title:', title);
-
   return (
     <div className={classes.root}>
       <ExpansionPanel square={true}>

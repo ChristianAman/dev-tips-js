@@ -1,49 +1,18 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const { models } = require('./src/models');
 
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
+// const indexRouter = require('./routes/index');
+// const usersRouter = require('./routes/users');
 
-var app = express();
-
-const mock = {
-  tips: [
-    {
-      id: '123',
-      title: 'Tip 1',
-      desc:
-        'Elit veniam reprehenderit enim veniam aliqua occaecat aute nostrud aliquip sit. Laborum culpa nisi dolore consequat nulla amet veniam mollit aliqua. Id aliquip id quis esse deserunt duis veniam. Aliquip et ad reprehenderit aliqua. Occaecat minim cillum voluptate do ut.',
-      link: 'www.google.com',
-    },
-    {
-      id: '1234',
-      title: 'Tip 2',
-      desc:
-        'Elit veniam reprehenderit enim veniam aliqua occaecat aute nostrud aliquip sit. Laborum culpa nisi dolore consequat nulla amet veniam mollit aliqua. Id aliquip id quis esse deserunt duis veniam. Aliquip et ad reprehenderit aliqua. Occaecat minim cillum voluptate do ut.',
-      link: 'www.google.com',
-    },
-    {
-      id: '12345',
-      title: 'Tip 3',
-      desc:
-        'Elit veniam reprehenderit enim veniam aliqua occaecat aute nostrud aliquip sit. Laborum culpa nisi dolore consequat nulla amet veniam mollit aliqua. Id aliquip id quis esse deserunt duis veniam. Aliquip et ad reprehenderit aliqua. Occaecat minim cillum voluptate do ut.',
-      link: 'www.google.com',
-    },
-    {
-      id: '123456',
-      title: 'Tip 4',
-      desc:
-        'Elit veniam reprehenderit enim veniam aliqua occaecat aute nostrud aliquip sit. Laborum culpa nisi dolore consequat nulla amet veniam mollit aliqua. Id aliquip id quis esse deserunt duis veniam. Aliquip et ad reprehenderit aliqua. Occaecat minim cillum voluptate do ut.',
-      link: 'www.google.com',
-    },
-  ],
-};
+const app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -55,15 +24,32 @@ app.use(cookieParser());
 //   next();
 // });
 
+app.use(async (req, res, next) => {
+  req.context = {
+    models,
+  };
+  next();
+});
+
 app.disable('etag');
 
 app.get('/test', (req, res) => {
   res.send('yay!');
 });
 
-app.get('/tips', (req, res) => {
+app.get('/tips', async (req, res) => {
+  const tips = await req.context.models.Tip.find();
   res.status(200);
-  res.json(mock);
+  res.json(tips);
+});
+
+app.post('/tips', async (req, res) => {
+  console.log(req.body);
+  const tip = new models.Tip({ ...req.body });
+
+  await tip.save();
+
+  res.send(tip);
 });
 
 module.exports = app;

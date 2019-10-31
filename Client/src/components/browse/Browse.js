@@ -5,12 +5,11 @@ import axios from 'axios';
 
 const Browse = () => {
   const [tips, setTips] = useState([]);
-  console.log('1');
 
   const getData = async () => {
     const { data } = await axios('/tips');
-    console.log('in get data:', data);
-    setTips([...data.tips]);
+    console.log(data);
+    setTips([...data]);
   };
 
   useEffect(() => {
@@ -24,10 +23,8 @@ const Browse = () => {
   return (
     <div className='Browse'>
       This is a Browse!
-      {console.log('In return:', tips)}
       {tips.map(x => {
-        console.log('hej', x);
-        return <Card key={x.id} title={x.title} desc={x.desc} link={x.link} id={x.id} />;
+        return <Card key={x._id} title={x.title} desc={x.desc} link={x.link} id={x.id} />;
       })}
     </div>
   );
