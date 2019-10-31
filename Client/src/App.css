@@ -1,3 +1,7 @@
+body {
+  color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -14,4 +18,19 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+a {
+  color: rgb(53, 104, 192);
+  text-decoration-line: none;
+  /* color: #081830; */
+}
+
+.main-bg {
+  background: #121212;
+}
+
+.paper {
+  background: '#333';
+  color: white;
 }

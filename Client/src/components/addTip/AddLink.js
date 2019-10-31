@@ -12,10 +12,45 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 300,
+    color: '#fff',
+    borderColor: '#fff',
+    '& .MuiInputLabel-root': {
+      color: 'white',
+    },
+    '& lable': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& label.Mui-focused': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& .MuiInput-underline:after': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& .MuiOutlinedInput-root': {
+      color: 'white',
+      '& fieldset': {
+        color: 'white',
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'white',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white',
+      },
+    },
   },
   button: {
     margin: theme.spacing(1),
+    color: '#fff',
+    borderColor: '#fff',
+    '&$disabled': {
+      color: 'white',
+    },
   },
   input: {
     display: 'none',
@@ -42,7 +77,7 @@ export const AddLink = props => {
   const validate = value => {
     let validationError = error;
 
-    const valueValid = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/i.test(
+    const valueValid = /^((https?|ftp|smtp):\/\/)?([0-9a-zA-z-#.]*)?(www.)?[a-z0-9\-]+\.[a-z]+(\/[a-zA-Z0-9#\-.\=&?_]+\/?)*$/i.test(
       value
     );
 
@@ -54,21 +89,21 @@ export const AddLink = props => {
   return (
     <div>
       <DisplayErrors error={error} />
-      <form className={classes.container} noValidate autoComplete='off'>
-        <div>
-          <TextField
-            id='link'
-            className={classes.textField}
-            label='link'
-            margin='normal'
-            variant='outlined'
-            onChange={e => handleUserInput(e)}
-          />
-        </div>
-        <Button onClick={cb} disabled={!linkValid} variant='outlined' className={classes.button}>
-          Next
-        </Button>
-      </form>
+      {/* <form className={classes.container} noValidate autoComplete='off'> */}
+      <div>
+        <TextField
+          id='link'
+          className={classes.textField}
+          label='link'
+          margin='normal'
+          variant='outlined'
+          onChange={e => handleUserInput(e)}
+        />
+      </div>
+      <Button onClick={cb} disabled={!linkValid} variant='outlined' className={classes.button}>
+        Next
+      </Button>
+      {/* </form> */}
     </div>
   );
 };

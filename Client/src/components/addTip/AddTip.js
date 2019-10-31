@@ -14,6 +14,9 @@ import { Typography } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
+    margin: theme.spacing(3, 8),
+    background: '#333',
+    color: '#fff',
   },
 }));
 
@@ -53,13 +56,12 @@ const AddTip = () => {
   };
 
   const classes = useStyles();
-  console.log('style:', classes);
-  console.log(state);
 
   return (
     <Paper className={classes.root}>
       <Typography variant='h3' component='h2'>
         Add Tip
+        <hr />
       </Typography>
       {renderStep(step)}
     </Paper>

@@ -9,7 +9,10 @@ import Link from '../util/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
+    // width: '80%',
+    margin: theme.spacing(1, 5),
+    background: '#333',
+    color: 'white',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -27,8 +30,8 @@ const Card = props => {
   // };
 
   return (
-    <div className={classes.root}>
-      <ExpansionPanel square={true}>
+    <div>
+      <ExpansionPanel square={true} className={classes.root}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls='panel1a-content'
@@ -38,10 +41,7 @@ const Card = props => {
         <ExpansionPanelDetails>
           <Typography>
             {desc}
-            <Link to='www.google.se' text='Clicka på mig' />
-            {/* <a href='www.google.com' target='_blank'>
-              Check out!
-            </a> */}
+            <Link to={link} text='Clicka på mig' />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

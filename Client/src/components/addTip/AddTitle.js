@@ -12,10 +12,45 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 300,
+    color: '#fff',
+    borderColor: '#fff',
+    '& .MuiInputLabel-root': {
+      color: 'white',
+    },
+    '& lable': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& label.Mui-focused': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& .MuiInput-underline:after': {
+      color: '#fff',
+      borderColor: '#fff',
+    },
+    '& .MuiOutlinedInput-root': {
+      color: 'white',
+      '& fieldset': {
+        color: 'white',
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'white',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white',
+      },
+    },
   },
   button: {
     margin: theme.spacing(1),
+    color: '#fff',
+    borderColor: '#fff',
+    '&$disabled': {
+      color: 'white',
+    },
   },
   input: {
     display: 'none',
@@ -52,21 +87,23 @@ export const AddTitle = props => {
   return (
     <div>
       <DisplayErrors error={error} />
-      <form className={classes.container} noValidate autoComplete='off'>
-        <div>
-          <TextField
-            id='title'
-            className={classes.textField}
-            label='Title'
-            margin='normal'
-            variant='outlined'
-            onChange={e => handleUserInput(e)}
-          />
-        </div>
-        <Button onClick={cb} disabled={!titleValid} variant='outlined' className={classes.button}>
-          Next
-        </Button>
-      </form>
+      {/* <form className={classes.container} noValidate autoComplete='off'> */}
+      <div>
+        <TextField
+          id='title'
+          className={classes.textField}
+          multiline
+          rowsMax='5'
+          label='Title'
+          margin='normal'
+          variant='outlined'
+          onChange={e => handleUserInput(e)}
+        />
+      </div>
+      <Button onClick={cb} disabled={!titleValid} variant='outlined' className={classes.button}>
+        Next
+      </Button>
+      {/* </form> */}
     </div>
   );
 };

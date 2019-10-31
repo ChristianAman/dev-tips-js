@@ -52,4 +52,13 @@ app.post('/tips', async (req, res) => {
   res.send(tip);
 });
 
+app.delete('/tips/:tipId', async (req, res) => {
+  const tip = await req.context.models.Tip.findById(req.params.tipId);
+  let result = null;
+  if (tip) {
+    result = await tip.remove();
+  }
+  return res.send(result);
+});
+
 module.exports = app;
