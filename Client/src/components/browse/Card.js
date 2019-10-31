@@ -5,7 +5,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Link from '@material-ui/core/Link';
+import Link from '../util/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +22,10 @@ const Card = props => {
   const { title, desc, link } = props;
   const classes = useStyles();
 
+  // const go = () => {
+  //   window.location.host = 'www.google.com';
+  // };
+
   return (
     <div className={classes.root}>
       <ExpansionPanel square={true}>
@@ -34,7 +38,10 @@ const Card = props => {
         <ExpansionPanelDetails>
           <Typography>
             {desc}
-            <Link href={link}>Read more...</Link>
+            <Link to='www.google.se' text='Clicka på mig' />
+            {/* <a href='www.google.com' target='_blank'>
+              Check out!
+            </a> */}
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

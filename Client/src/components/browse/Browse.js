@@ -8,7 +8,6 @@ const Browse = () => {
 
   const getData = async () => {
     const { data } = await axios('/tips');
-    console.log(data);
     setTips([...data]);
   };
 

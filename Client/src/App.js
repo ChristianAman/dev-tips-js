@@ -45,12 +45,14 @@ const App = () => {
       {/* <ThemeProvider theme={theme}> */}
       <header className='App-header'>
         <Router>
-          <Header />
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/browse' exact component={Browse} />
-            <Route path='/addtip' exact component={AddTip} />
-          </Switch>
+          <div>
+            <Header />
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/browse' exact component={Browse} />
+              <Route path='/addtip' exact component={AddTip} />
+            </Switch>
+          </div>
         </Router>
       </header>
       {/* </ThemeProvider> */}
