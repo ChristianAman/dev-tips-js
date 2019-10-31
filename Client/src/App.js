@@ -5,8 +5,8 @@ import Browse from './components/browse/Browse';
 import AddTip from './components/addTip/AddTip';
 import Home from './components/Home';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
-import colors from '@material-ui/core/colors';
+import { /*ThemeProvider, createMuiTheme,*/ withStyles } from '@material-ui/core/styles';
+// import colors from '@material-ui/core/colors';
 // import Typography from '@material-ui/core/Typography';
 // import Container from '@material-ui/core/Container';
 import 'typeface-roboto';
@@ -28,11 +28,11 @@ const GlobalCss = withStyles({
   '@global': {
     // You should target [class*="MuiButton-root"] instead if you nest themes.
     '.MuiButton-root': {
-      color: '#ffff00',
+      //color: '#ffff00',
     },
     '.MuiExpansionPanelDetails-root': {
-      margin: '10rem',
-      background: '#fff00',
+      margin: '1rem',
+      //background: '#fff00',
     },
   },
 })(() => null);

@@ -19,19 +19,21 @@ const useStyles = makeStyles(theme => ({
 // import PropTypes from 'prop-types';
 
 const Card = props => {
-  const { id, title, desc, link } = props;
+  const { title, desc, link } = props;
   const classes = useStyles();
+
+  console.log('title:', title);
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel square={true} spacing={true}>
+      <ExpansionPanel square={true}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls='panel1a-content'
           id='panel1a-header'>
           <Typography className={classes.heading}>{title}</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails expanded={true}>
+        <ExpansionPanelDetails>
           <Typography>
             {desc}
             <Link href={link}>Read more...</Link>
