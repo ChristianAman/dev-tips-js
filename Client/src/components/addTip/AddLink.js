@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300,
+    width: 600,
+    maxWidth: '60%',
     color: '#fff',
     borderColor: '#fff',
     '& .MuiInputLabel-root': {
@@ -89,11 +90,12 @@ export const AddLink = props => {
   return (
     <div>
       <DisplayErrors error={error} />
-      {/* <form className={classes.container} noValidate autoComplete='off'> */}
       <div>
         <TextField
           id='link'
           className={classes.textField}
+          multiline
+          rowsMax='5'
           label='link'
           margin='normal'
           variant='outlined'
@@ -103,7 +105,6 @@ export const AddLink = props => {
       <Button onClick={cb} disabled={!linkValid} variant='outlined' className={classes.button}>
         Next
       </Button>
-      {/* </form> */}
     </div>
   );
 };

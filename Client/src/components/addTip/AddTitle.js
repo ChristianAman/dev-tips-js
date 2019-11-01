@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300,
+    width: 600,
+    maxWidth: '60%',
     color: '#fff',
     borderColor: '#fff',
     '& .MuiInputLabel-root': {
@@ -87,7 +88,6 @@ export const AddTitle = props => {
   return (
     <div>
       <DisplayErrors error={error} />
-      {/* <form className={classes.container} noValidate autoComplete='off'> */}
       <div>
         <TextField
           id='title'
@@ -103,7 +103,6 @@ export const AddTitle = props => {
       <Button onClick={cb} disabled={!titleValid} variant='outlined' className={classes.button}>
         Next
       </Button>
-      {/* </form> */}
     </div>
   );
 };

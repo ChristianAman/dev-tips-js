@@ -21,7 +21,7 @@ const Browse = () => {
 
   return (
     <div className='Browse'>
-      This is a Browse!
+      Browse tips
       {tips.map(x => {
         return <Card key={x._id} title={x.title} desc={x.desc} link={x.link} id={x.id} />;
       })}

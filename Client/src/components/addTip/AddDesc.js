@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300,
+    width: 600,
+    maxWidth: '60%',
     color: '#fff',
     borderColor: '#fff',
     '& .MuiInputLabel-root': {
@@ -77,9 +78,9 @@ export const AddDesc = props => {
   const validate = value => {
     let validationError = error;
 
-    const valueValid = /^([\w\W]{3,})$/i.test(value);
+    const valueValid = /^([\w\W]{10,})$/i.test(value);
 
-    validationError = valueValid ? '' : 'The desc needs to be atleast 3 characters long';
+    validationError = valueValid ? '' : 'The desc needs to be atleast 10 characters long';
     setdescValid(valueValid);
     setError(validationError);
   };
@@ -87,11 +88,12 @@ export const AddDesc = props => {
   return (
     <div>
       <DisplayErrors error={error} />
-      {/* <form className={classes.container} noValidate autoComplete='off'> */}
       <div>
         <TextField
           id='desc'
           className={classes.textField}
+          multiline
+          rowsMax='8'
           label='desc'
           margin='normal'
           variant='outlined'
@@ -101,7 +103,6 @@ export const AddDesc = props => {
       <Button onClick={cb} disabled={!descValid} variant='outlined' className={classes.button}>
         Next
       </Button>
-      {/* </form> */}
     </div>
   );
 };

@@ -9,7 +9,6 @@ import Link from '../util/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    // width: '80%',
     margin: theme.spacing(1, 5),
     background: '#333',
     color: 'white',
@@ -19,16 +18,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
-// import PropTypes from 'prop-types';
 
 const Card = props => {
   const { title, desc, link } = props;
   const classes = useStyles();
-
-  // const go = () => {
-  //   window.location.host = 'www.google.com';
-  // };
-
   return (
     <div>
       <ExpansionPanel square={true} className={classes.root}>
@@ -48,7 +41,5 @@ const Card = props => {
     </div>
   );
 };
-
-// Card.propTypes = {};
 
 export default Card;

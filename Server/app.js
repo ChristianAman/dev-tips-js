@@ -5,24 +5,12 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const { models } = require('./src/models');
 
-// const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
-
 const app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-
-// app.get('/*', function(req, res, next) {
-//   res.setHeader('Last-Modified', new Date().toUTCString());
-//   next();
-// });
 
 app.use(async (req, res, next) => {
   req.context = {

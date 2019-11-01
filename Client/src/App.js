@@ -5,57 +5,23 @@ import Browse from './components/browse/Browse';
 import AddTip from './components/addTip/AddTip';
 import Home from './components/Home';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { /*ThemeProvider, createMuiTheme,*/ withStyles } from '@material-ui/core/styles';
-// import colors from '@material-ui/core/colors';
-// import Typography from '@material-ui/core/Typography';
-// import Container from '@material-ui/core/Container';
 import 'typeface-roboto';
 import './App.css';
-
-// const HistoryContext = React.createContext();
-
-// const theme = createMuiTheme({
-//   typography: {
-//     button: {
-//       fontSize: '1rem',
-//       color: '#ffff00',
-//     },
-//   },
-//   button: {
-//     color: '#ffff00',
-//   },
-// });
-// const GlobalCss = withStyles({
-//   // @global is handled by jss-plugin-global.
-//   '@global': {
-//     // You should target [class*="MuiButton-root"] instead if you nest themes.
-//     '.MuiButton-root': {
-//       //color: '#ffff00',
-//     },
-//     '.MuiExpansionPanelDetails-root': {
-//       margin: '1rem',
-//       //background: '#fff00',
-//     },
-//   },
-// })(() => null);
 
 const App = () => {
   return (
     <div className='App'>
       <CssBaseline />
-      {/* <GlobalCss /> */}
       <header className='App-header main-bg'>
         <Router>
-          <div>
+          <React.Fragment>
             <Header />
             <Switch>
-              {/* <HistoryContext.Provider context={Router.hi}> */}
               <Route path='/' exact component={Home} />
               <Route path='/browse' exact component={Browse} />
               <Route path='/addtip' exact component={AddTip} />
-              {/* </HistoryContext.Provider> */}
             </Switch>
-          </div>
+          </React.Fragment>
         </Router>
       </header>
     </div>
